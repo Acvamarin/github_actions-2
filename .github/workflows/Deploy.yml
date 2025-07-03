@@ -1,0 +1,57 @@
+# Имя workflow, которое будет отображаться в GitHub
+name: Deploy
+
+# Условие запуска workflow — при каждом push в репозиторий
+on: push
+
+jobs:
+  # Имя задания (job) — можно назвать как угодно
+  test:
+    # Указываем, на какой ОС будет запускаться job
+    runs-on: ubuntu-latest
+
+    steps:
+      # Шаг 1: Получить код из репозитория
+      - name: Get repository code
+        uses: actions/checkout@v3  # Официальный экшен для клонирования репозитория
+
+      # Шаг 2: Установить зависимости
+      - name: Install dependencies
+        run: npm ci  # Быстрая и чистая установка зависимостей (из package-lock.json)
+
+      # Шаг 3: Запустить тесты
+      - name: Test application
+        run: npm run test  # Выполнение тестов, определённых в package.json
+  lint:
+    # Указываем, на какой ОС будет запускаться job
+    runs-on: ubuntu-latest
+
+    steps:
+      # Шаг 1: Получить код из репозитория
+      - name: Get repository code
+        uses: actions/checkout@v3  # Официальный экшен для клонирования репозитория
+
+      # Шаг 2: Установить зависимости
+      - name: Install dependencies
+        run: npm ci  # Быстрая и чистая установка зависимостей (из package-lock.json)
+
+      # Шаг 3: Запустить тесты
+      - name: lint app
+        run: npm run lint  
+
+  build:
+    # Указываем, на какой ОС будет запускаться job
+    runs-on: ubuntu-latest
+
+    steps:
+      # Шаг 1: Получить код из репозитория
+      - name: Get repository code
+        uses: actions/checkout@v3  # Официальный экшен для клонирования репозитория
+
+      # Шаг 2: Установить зависимости
+      - name: Install dependencies
+        run: npm ci  # Быстрая и чистая установка зависимостей (из package-lock.json)
+
+      # Шаг 3: Запустить тесты
+      - name: build app
+        run: npm run build 
