@@ -2,7 +2,10 @@
 name: Deploy
 
 # Условие запуска workflow — при каждом push в репозиторий
-on: push
+on: 
+  push:
+    branches: 
+      - master
 
 jobs:
   # Имя задания (job) — можно назвать как угодно
