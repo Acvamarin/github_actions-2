@@ -9,7 +9,7 @@ jobs:
   test:
     # Указываем, на какой ОС будет запускаться job
     runs-on: ubuntu-latest
-
+    needs: lint
     steps:
       # Шаг 1: Получить код из репозитория
       - name: Get repository code
